@@ -113,4 +113,4 @@ p <- p +
   theme(plot.caption = element_text(family = "Gotham Book", size=8, hjust=0))
 
 
-
+ggsave("daily_registrations_plot.jpeg", plot=age_lines, path="outputs", width=7, height=4, dpi=300)
