@@ -6,8 +6,7 @@ library(lubridate)
 library(tidyverse)
 
 # source function to get data 
-path <- "math70076-assessment-1"
-source(paste0(path, "/R/get_UKVR_data.R"))
+source("R/get_UKVR_data.R")
 
 
 ##### Daily Numbers ############################################################
