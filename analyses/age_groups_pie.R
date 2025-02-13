@@ -40,8 +40,8 @@ age_groups$age_group <- factor(age_groups$age_group, levels=c("Under_25", "age_2
 pie <- ggplot(age_groups, aes(x="", y=perc)) +
   geom_bar(stat="identity", aes(fill=age_group), color="white", width=0.5) +
   theme_void() +
-  labs(title="YOUNG VOTERS MAKE UP MAJORITY OF NEW VOTER REGISTRATIONS",
-       subtitle="Percentage of 2024 Voter Registrations by Age Group",
+  labs(title="YOUNG VOTERS MAKE UP MAJORITY OF \n NEW VOTER REGISTRATIONS",
+       subtitle="Percentage of 2024 Voter Registrations by \n Age Group",
        x="", y="",
        fill="Age Group") +
   theme(plot.title=element_text(family="Gotham Cond Bold", size=20, 
@@ -55,15 +55,17 @@ pie <- ggplot(age_groups, aes(x="", y=perc)) +
                              "55 to 64", "65 to 74", "Over 75")) +
   theme(panel.border=element_blank(),
         plot.background=element_rect(fill="white", color="black"),
-        legend.margin = margin(8,r=20,8,8))
+        legend.margin = margin(l=3, r=20,8,8),
+        legend.title=element_text(size=8),
+        legend.text=element_text(size=8))
 
 
 
 
 ## add annotations
 age_groups$percentage <- age_groups$perc * 100
-labels<-c("Under 25 (25%)", "25 to 34 (31%)", "35 to 44 (18%)", "45 to 54 (11%)", 
-         "55 to 64 (8%)", "65 to 74 (5%)", "Over 75 (3%)")
+labels<-c("Under 25 \n (25%)", "25 to 34 \n (31%)", "35 to 44 \n (18%)", "45 to 54 \n (11%)", 
+         "55 to 64 \n (8%)", "65 to 74 (5%)", "Over 75 (3%)")
 
 
 age_groups <- age_groups |>
@@ -85,4 +87,4 @@ pie <- pie + geom_text(data=age_groups, mapping=aes(label=labels,
                 family="Gotham Book")
 
 ## save image 
-ggsave("age_groups_pie.jpeg", pie, path="outputs", width=4, height=4)
+ggsave("age_groups_pie_chart.pdf", pie, path="outputs", width=3.5, height=3.5)
