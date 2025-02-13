@@ -15,10 +15,10 @@ source("R/colour_palette.R")
 source("R/rolling_mean.R")
 source("R/pad_with_NAs.R")
 
-font_add("Gotham Bold", "resources/Gotham-Bold.otf"))
-font_add("Gotham BoldItalic", "resources/Gotham-BoldItalic.otf"))
-font_add("Gotham Book", "resources/Gotham-Book.otf"))
-font_add("Gotham Cond Bold", "resources/GothamCond-Bold.otf"))
+font_add("Gotham Bold", "resources/Gotham-Bold.otf")
+font_add("Gotham BoldItalic", "resources/Gotham-BoldItalic.otf")
+font_add("Gotham Book", "resources/Gotham-Book.otf")
+font_add("Gotham Cond Bold", "resources/GothamCond-Bold.otf")
 showtext_auto()
 
 
@@ -107,7 +107,7 @@ p <- p + annotate("label", x=max_date+30, y=max_count-15000,
 caption_text <- str_wrap("Note: Weekly rolling average of total number of voter registrations 
                 in the UK from January 2024 to December 2024 are shown in red. Daily voter registration
                 numbers are shown in pink. Local and general 
-                election dates are indicated by grey dashed lines.")
+                election dates are indicated by grey dashed lines. SOURCE: UK Register to vote - performance dashboard")
 p <- p + 
   labs(caption=caption_text) +
   theme(plot.caption = element_text(family = "Gotham Book", size=8, hjust=0))
