@@ -56,9 +56,7 @@ age_groups_long$age_group <- factor(age_groups_long$age_group, levels=c("under_2
                                                               "over_75_rolling"))
 
 
-subtitle_text <- str_wrap("Average voter registrations for all age groups peaked 
-                  before UK general and local elections in 2024")
-title_text <- str_wrap("YOUNGEST VOTERS HAVE HIGHEST PEAK IN REGISTRATIONS")
+title_text <- str_wrap("YOUNGEST VOTERS HAVE HIGHEST PEAK")
 
 
 #### Plot 
@@ -74,10 +72,9 @@ age_lines <- ggplot(age_groups_long, aes(x=Date, y=registrations, color=age_grou
   
   # axes
   labs(title=title_text,
-        subtitle=subtitle_text,
         y="Number of Voter Registrations",
        color="Age Group") +
-  theme(plot.title=element_text(family="Gotham Cond Bold", size=20, 
+  theme(plot.title=element_text(family="Gotham Cond Bold", size=16, 
                                 margin=margin(t=8, l=8, r=8, b=1), hjust=0), 
         plot.subtitle = element_text(family="Gotham Book", size=11, hjust=0),
         axis.text.x=element_text(family="Gotham Book", size=8, angle=45, 
@@ -151,23 +148,26 @@ age_lines <- age_lines + geom_point(aes(x=as.Date("2024-01-04"), y=age_group_poi
 
 ## add annotations
 age_lines <- age_lines + 
-  annotate("label", x=as.Date("2024-08-01"), y=30000, 
-                                  label="4 July 2024 \n UK General Election", 
-                                  color="white", fill="black", label.size=0, 
-                                  hjust=0, family="Gotham Bold", size=3) +
-  annotate("segment", x=as.Date("2024-07-04"), xend=as.Date("2024-08-01"),
-           y=30000, yend=30000, color='black') +
-  annotate("segment", x=as.Date("2024-04-01"), xend=as.Date("2024-05-02"),
-           y=55000, yend=55000,
-           color='black') +
-  annotate("label", x=as.Date("2024-02-26"), y=55000,
-           label="02 May 2024 \n Local Elections",
-           color="white", 
-           fill="black",
-           label.size=0, 
-           hjust=0, 
-           family="Gotham Bold", size=3)
+#  annotate("label", x=as.Date("2024-08-01"), y=30000, 
+#                                  label="4 July 2024 \n UK General Election", 
+#                                  color="white", fill="black", label.size=0, 
+#                                  hjust=0, family="Gotham Bold", size=3) +
+#  annotate("segment", x=as.Date("2024-07-04"), xend=as.Date("2024-08-01"),
+#          y=30000, yend=30000, color='black') +
+#  annotate("segment", x=as.Date("2024-04-01"), xend=as.Date("2024-05-02"),
+#           y=55000, yend=55000,
+#           color='black') +
+#  annotate("label", x=as.Date("2024-02-26"), y=55000,
+#           label="02 May 2024 \n Local Elections",
+#           color="white", 
+#           fill="black",
+#          label.size=0, 
+#           hjust=0, 
+#           family="Gotham Bold", size=3)
+theme(legend.title=element_blank(),
+        legend.text=element_text(size=8),
+        axis.title=element_text(size=8))
 
 
 ## save image 
-ggsave("age_lines.jpeg", plot=age_lines, path="outputs", width=4, height=3, dpi=300)
+ggsave("age_lines_plot.pdf", plot=age_lines, path="outputs", width=3.75, height=2.5, dpi=300)
